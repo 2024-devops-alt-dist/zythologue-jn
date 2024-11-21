@@ -29,28 +29,22 @@ You should see a container named postgres_brief in the list of active containers
 Upon startup, the initialization scripts for the database will be executed automatically. These scripts will:
 Create all required tables.
 Insert fixture data into the database for testing and demonstration purposes.
-### Query Execution
-A script named query-exercises.sql is available, containing all the queries required for this exercise. You can execute this script to test and interact with the database.
-Open your terminal and connect to the running PostgreSQL container using the docker exec command:
 
+### Execute Directly Without Entering the Container
+Run the following command by replacing to your local path:
+For exemple:
 ```bash
-  docker exec -it postgres_brief psql -U user -d zythologue_db
+  docker exec -i postgres_brief psql -U user -d zythologue_db < path/to/local/zythologue-jn/sql/query-exercises.sql
+
 ```
-Once inside the PostgreSQL interactive shell (psql), you can execute the query-exercises.sql script. Assuming the file is in the directory mounted to the container, run:
-
+For exemple:
 ```bash
-  \i sql/query-exercises.sql
+  docker exec -i postgres_brief psql -U user -d zythologue_db < /Users/j.ni/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Simplon/zythologue-jn/sql/query-exercises.sql
+
 ```
 After running the script, review the output of each query in the terminal to ensure it executes as expected.
 The output will display the results of each query included in query-exercises.sql.
-### Alternative: Execute Directly Without Entering the Container
-If you prefer to execute the script directly from your host machine without entering the container:
-Run the following command:
 
-```bash
-  docker exec -i postgres_brief psql -U user -d zythologue_db < query-exercises.sql
-
-```
 ### Optional: Fixture Cleanup
 If you wish to remove all the fixture data, a dedicated script is provided to perform this task efficiently.
 ### Optional: Database Cleanup
